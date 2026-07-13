@@ -5,6 +5,7 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 
 load_dotenv()
 openapi_key = os.environ.get('OPENAI_API_KEY')
+print(openapi_key)
 documents = SimpleDirectoryReader('data').load_data()
 index = VectorStoreIndex(documents)
 query_index = index.as_query_engine()
