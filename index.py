@@ -1,5 +1,3 @@
-import os
-from dotenv import load_dotenv
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.ollama import OllamaEmbedding
@@ -17,6 +15,8 @@ Settings.embed_model = OllamaEmbedding(
 
 documents = SimpleDirectoryReader("data").load_data()
 index = VectorStoreIndex(documents)
+
+index.storage_context.persist('./storage')
 
 
 query_engine = index.as_query_engine()
