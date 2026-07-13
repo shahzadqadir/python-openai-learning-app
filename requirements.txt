@@ -2,3 +2,5 @@ llama-index
 tiktoken
 langchain
 python-dotenv
+llama-index-llms-ollama
+llama-index-embeddings-ollama
