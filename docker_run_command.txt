@@ -1,0 +1,1 @@
+docker run -v .:/home/script/workspace -it --rm -d --add-host=host.docker.internal:host-gateway --name=openai-learning-app shahzadqadir/openai-learning-app:v2
