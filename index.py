@@ -1,15 +1,31 @@
 import os
 from dotenv import load_dotenv
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
+from llama_index.llms.ollama import Ollama
+from llama_index.embeddings.ollama import OllamaEmbedding
 
+Settings.llm = Ollama(
+    model="buddy",
+    request_timeout=120.0
+)
 
-load_dotenv()
-openapi_key = os.environ.get('OPENAI_API_KEY')
-print(openapi_key)
-documents = SimpleDirectoryReader('data').load_data()
+Settings.embed_model = OllamaEmbedding(
+    model_name="nomic-embed-text"
+)
+
+documents = SimpleDirectoryReader("data").load_data()
 index = VectorStoreIndex(documents)
-query_index = index.as_query_engine()
-name = query_index.query("What is candidate's name? ")
-address = query_index.query("Where is the candidate's address? ")
+
+
+query_engine = index.as_query_engine()
+
+name = query_engine.query(
+    "What is candidate's name? "
+)
+
+address = query_engine.query(
+    "What is candidate's address?"
+)
+
 print(name)
 print(address)
