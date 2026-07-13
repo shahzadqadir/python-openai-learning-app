@@ -6,11 +6,13 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 
 Settings.llm = Ollama(
     model="buddy",
+    base_url="http://host.docker.internal:11434",
     request_timeout=120.0
 )
 
 Settings.embed_model = OllamaEmbedding(
-    model_name="nomic-embed-text"
+    model_name="nomic-embed-text",
+    base_url="http://host.docker.internal:11434",
 )
 
 documents = SimpleDirectoryReader("data").load_data()
