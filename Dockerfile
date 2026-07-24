@@ -10,4 +10,6 @@ USER script
 
 WORKDIR /home/script/workspace
 
+EXPOSE 8000
+
 CMD ["sleep", "infinity"]

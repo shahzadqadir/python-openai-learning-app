@@ -4,3 +4,7 @@ langchain
 python-dotenv
 llama-index-llms-ollama
 llama-index-embeddings-ollama
+django
+djangorestframework
+django-cors-headers
+django-environ
